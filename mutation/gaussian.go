@@ -2,7 +2,9 @@ package mutation
 
 import (
 	"github.com/RH12503/Triangula/normgeom"
-	"github.com/RH12503/Triangula/random"
+	"github.com/RH12503/Triangula/random" 
+	"math/rand" 
+	_ "fmt"
 )
 
 // gaussianMethod uses a gaussian random number while calculating the magnitude of a mutation.
@@ -12,16 +14,24 @@ type gaussianMethod struct {
 	amount float64 // The amount a point's coordinates are changed.
 }
 
-func (g gaussianMethod) Mutate(points normgeom.NormPointGroup, mutated func(mutation Mutation)) {
+func (g gaussianMethod) Mutate(points normgeom.NormPointGroup, mutated func(mutation Mutation)) { 
+	scale:=120 
 	for i := range points {
 		if random.Float32() < g.rate {
 			old := points[i]
 
-			points[i].X += random.NormFloat64() * g.amount * 0.5
-			points[i].Y += random.NormFloat64() * g.amount * 0.5
+			// points[i].X += random.NormFloat64() * g.amount * 0.5
+			// points[i].Y += random.NormFloat64() * g.amount * 0.5 
 
-			points[i].Constrain()
+			randomInt1 := rand.Intn(scale+1) 
+			randomFloat1 := float64(randomInt1) 
+			points[i].X = randomFloat1*1/float64(scale);
+			randomInt2 := rand.Intn(scale+1) 
+			randomFloat2 := float64(randomInt2)
+			points[i].Y = randomFloat2*1/float64(scale)  
 
+
+			points[i].Constrain() 
 			mutated(Mutation{
 				Old:   old,
 				New:   points[i],

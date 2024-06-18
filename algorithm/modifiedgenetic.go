@@ -7,7 +7,7 @@ import (
 	"github.com/RH12503/Triangula/normgeom"
 	"github.com/panjf2000/ants/v2"
 	"sort"
-	"time"
+	"time" 
 )
 
 // An modifiedGenetic is a genetic algorithm with a modified crossover process.

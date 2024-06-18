@@ -7,7 +7,7 @@ import (
 	"github.com/RH12503/Triangula/normgeom"
 	"github.com/panjf2000/ants/v2"
 	"sort"
-	"time"
+	"time" 
 )
 
 // An simple is a simplified genetic algorithm.
@@ -35,9 +35,8 @@ type simple struct {
 	stats Stats // Simple statistics relating to the algorithm.
 }
 
-func (s *simple) Step() {
-	t := time.Now() // Measure the time taken for the generation
-
+func (s *simple) Step() { 
+	t := time.Now() // Measure the time taken for the generation 
 	// Fill the population with new members
 	s.newGeneration()
 
